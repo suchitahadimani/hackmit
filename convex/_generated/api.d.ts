@@ -15,6 +15,7 @@ import type {
 } from "convex/server";
 import type * as musicprefs from "../musicprefs.js";
 import type * as myFunctions from "../myFunctions.js";
+import type * as songs from "../songs.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -27,6 +28,7 @@ import type * as myFunctions from "../myFunctions.js";
 declare const fullApi: ApiFromModules<{
   musicprefs: typeof musicprefs;
   myFunctions: typeof myFunctions;
+  songs: typeof songs;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

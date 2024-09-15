@@ -1,3 +1,6 @@
+
+//THIS IS THE COMPONENT WHICH MAKES THE BUTTONS ON THE FORM PAGE -- TO ALLOW FOR MULTISELECT AND EASILY CREATE NEW BUTTONS
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 

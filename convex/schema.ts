@@ -19,7 +19,14 @@ export default defineSchema(
       workoutMusic: v.array(v.string()),
       angryMusic: v.array(v.string()),
       otherPreferences: v.array(v.string()),
-    })
+    }),
+    songs: defineTable({
+      title: v.string(),
+      author: v.string(),
+      timestamp: v.number(),
+      isLiked: v.boolean(), 
+    }).index("by_timestamp", ["timestamp"])
+    .index("by_liked", ["isLiked"])
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

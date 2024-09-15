@@ -25,8 +25,7 @@ import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { StickyHeader } from "@/components/layout/sticky-header";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
-import { MusicOptionCards } from './Home/MusicOptionCards';
-import Dashboard from './dashboard';
+import { MusicOptionCards } from './MusicOptionCards';
 
 
 export default function Home() {
@@ -115,7 +114,7 @@ function SignedInContent() {
   const onSubmit = async (data: FormValues) => {
     try {
       const result = await submitMusicPreferences(data);
-      router.push('/dashboard');
+      router.push('/Dashboard');
       // You can add some user feedback here, like a success message
     } catch (error) {
       console.error("Error submitting preferences:", error);
