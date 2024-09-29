@@ -13,20 +13,23 @@ export default defineSchema(
     }),
 
     musicPreferences: defineTable({
+      user_Id: v.string(),
       favoriteGenres: v.array(v.string()),
       sadMusic: v.array(v.string()),
       happyMusic: v.array(v.string()),
       workoutMusic: v.array(v.string()),
       angryMusic: v.array(v.string()),
       otherPreferences: v.array(v.string()),
-    }),
+    }).index("by_user", ["user_Id"]),
     songs: defineTable({
+      user_Id: v.string(),
       title: v.string(),
       author: v.string(),
       timestamp: v.number(),
       isLiked: v.boolean(), 
     }).index("by_timestamp", ["timestamp"])
     .index("by_liked", ["isLiked"])
+    .index("by_user", ["user_Id"])
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

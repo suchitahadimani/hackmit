@@ -26,6 +26,7 @@ import { StickyHeader } from "@/components/layout/sticky-header";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import { MusicOptionCards } from './MusicOptionCards';
+import { upsertMusicPreferences } from '@/convex/musicprefs';
 
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
     <>
       <StickyHeader className="px-4 py-2">
         <div className="flex justify-between items-center">
-          HackMIT Project
+          BeatBrew
           <SignInAndSignUpButtons />
         </div>
       </StickyHeader>
@@ -108,12 +109,12 @@ function SignedInContent() {
   });
 
 
-  const submitMusicPreferences = useMutation(api.musicprefs.submitMusicPreferences);
+  const upsertMusicPreferences = useMutation(api.musicprefs.upsertMusicPreferences);
   const router = useRouter();
 
   const onSubmit = async (data: FormValues) => {
     try {
-      const result = await submitMusicPreferences(data);
+      const result = await upsertMusicPreferences(data);
       router.push('/Dashboard');
       // You can add some user feedback here, like a success message
     } catch (error) {
@@ -150,7 +151,7 @@ function SignedInContent() {
           <FormControl>
             <>
               <MusicOptionCards
-                options={['Rock', 'Rap', 'Ballad', 'Guitar', 'Piano', 'Bollywood', 'KPop']}
+                options={['Surprise Me', 'Rap', 'Ballad', 'Guitar', 'Piano', 'Bollywood', 'KPop']}
                 onSelect={(value) => field.onChange(value)} 
               />
               <Input 
@@ -177,7 +178,7 @@ function SignedInContent() {
           <FormControl>
             <>
               <MusicOptionCards
-                options={['Sad Ballads', 'Slow Blues', 'Nostalgia', 'Heartbreak', 'Motivational']}
+                options={['Not sure, surprise me', 'Slow Blues', 'Nostalgia', 'Motivational']}
                 onSelect={(value) => field.onChange(value)}
               />
               <Input 
@@ -201,7 +202,7 @@ function SignedInContent() {
           <FormControl>
             <>
               <MusicOptionCards
-                options={['Happy','Pop', 'Dance', 'Fast', 'DJ Party', 'Acapella']}
+                options={["Everything! Surprise me!",'Happy','Dance', 'DJ Party', 'Acapella']}
                 onSelect={(value) => field.onChange(value)}
               />
               <Input 
@@ -225,7 +226,7 @@ function SignedInContent() {
           <FormControl>
             <>
               <MusicOptionCards
-                options={['Hip-Hop', 'Electronic', 'Minimal Lyrics', 'Rythmic', 'Video Game Music']}
+                options={["Anything! Surprise me!", 'Minimal Lyrics', 'Rythmic', 'Video Game Music']}
                 onSelect={(value) => field.onChange(value)}
               />
               <Input 
@@ -249,7 +250,7 @@ function SignedInContent() {
           <FormControl>
             <>
               <MusicOptionCards
-                options={['Metal', 'Punk', 'Calming', 'Angry', 'Rebellious', 'Breaking Free']}
+                options={["I don't care, anything", 'Calming', 'Angry', 'Rebellious', 'Breaking Free']}
                 onSelect={(value) => field.onChange(value)}
               />
               <Input 
